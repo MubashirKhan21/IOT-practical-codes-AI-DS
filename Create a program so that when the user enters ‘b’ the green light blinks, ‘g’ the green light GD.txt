@@ -1,0 +1,60 @@
+// C++ code
+char data = 0; //Variable for storing received data
+
+void setup()
+{
+  pinMode(13, OUTPUT); //Sets digital pin 13 as output pin
+  pinMode(12, OUTPUT); //Sets digital pin 13 as output pin
+  pinMode(11, OUTPUT); //Sets digital pin 13 as output pin
+  pinMode(10, OUTPUT); //Sets digital pin 13 as output pin
+  Serial.begin(9600); //Sets the baud for serial data transmission
+}
+
+void loop()
+{
+    
+    Serial.println("b or B for BLUE LED\ng or G for GREEN LED\ny or Y for YELLOW LED\nr or R for RED LED\nEnter your choice : ");
+    while (Serial.available() == 0){}
+    data = Serial.read(); //Read the incoming data and store it into variable data
+    Serial.print(data); //Print Value inside data in Serial monitor
+	
+    if(data == 'b' || data == 'B')// Checks whether value of data is equal to b or B
+    {
+      digitalWrite(10, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(12, LOW);
+      Serial.println("\nBLUE LED TURNED ON\n");
+      digitalWrite(13, HIGH); //If value is b or B  then LED turns ON
+    }
+    else if(data == 'g' || data == 'G') // Checks whether value of data is equal to g or G
+    {
+      digitalWrite(10, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(13, LOW);
+      Serial.println("\nGREEN LED TURNED ON\n");
+      digitalWrite(12, HIGH); //If value is g or G then LED turns ON
+    }
+    else if(data == 'y' || data == 'Y') // Checks whether value of data is equal to y or Y
+    {
+      digitalWrite(10, LOW);
+      digitalWrite(12, LOW);
+      digitalWrite(13, LOW);
+      Serial.println("\nYELLOW LED TURNED ON\n");
+      digitalWrite(11, HIGH); //If value is y or Y then LED turns ON
+    }
+    else if(data == 'r' || data == 'R') // Checks whether value of data is equal to r of R
+    {
+      digitalWrite(11, LOW);
+      digitalWrite(12, LOW);
+      digitalWrite(13, LOW);
+      Serial.println("\nRED LED TURNED ON\n");
+      digitalWrite(10, HIGH); //If value is r or R then LED turns ON
+    }
+    else{
+      Serial.println("\nPLEASE SELECT RIGHT OPTION\nAll LED turned OFF!\n");
+      digitalWrite(13, LOW);
+      digitalWrite(12, LOW);
+      digitalWrite(11, LOW);
+      digitalWrite(10, LOW);
+    }
+}

@@ -1,0 +1,41 @@
+//C++ code
+int celsius = 0;
+int fahrenheit = 0;
+int maxTemp = 0;
+int minTemp = 0;
+
+void setup(){
+  	pinMode(A2, INPUT);
+  	Serial.begin(9600);
+}
+
+void loop(){
+  	celsius = map(((analogRead(A2) - 20) * 3.04), 0, 1023, -40, 125);
+ 	fahrenheit = ((celsius * 9) / 5 + 32);
+            Serial.print("Temperature in Cel : ");
+	Serial.print(celsius);
+	Serial.print("\nTemperature in Far : ");
+	Serial.print(fahrenheit);
+	Serial.println(" F");
+	
+      if(fahrenheit>=maxTemp && fahrenheit>=minTemp){
+        	    maxTemp=fahrenheit;
+    	   Serial.print("Maximum Temperature : ");
+    	   Serial.print(maxTemp);
+	   Serial.println(" F");
+               Serial.print("Minimum Temperature : ");
+    	   Serial.print(minTemp);
+	   Serial.println(" F");
+    }
+    else{
+             minTemp=fahrenheit;
+             Serial.print("Maximum Temperature : ");
+    	 Serial.print(maxTemp);
+	 Serial.println(" F");
+             Serial.print("Minimum Temperature : ");
+    	 Serial.print(minTemp);
+	 Serial.println(" F"); 
+  }
+  Serial.println("\n");
+  delay(10000);
+}

@@ -1,0 +1,38 @@
+// C++ code
+int counter = 0;
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if (counter <= 100)
+  {
+    digitalWrite(11, HIGH);
+    if (counter == 100)
+      Serial.println("Green LED is ON (counter 1 to 100)");
+  }
+  else if (counter > 100 && counter < 201)
+  {
+    digitalWrite(11, LOW);
+    digitalWrite(12, HIGH);
+    if (counter == 200)
+      Serial.println("Yellow LED is ON (counter 101 to 200)");
+  }
+  else
+  {
+    digitalWrite(12, LOW);
+    digitalWrite(13, HIGH);
+    if (counter == 300)
+      Serial.println("Red LED is ON (counter > 201)");
+  }
+
+  counter++;
+
+  delay(10); // Wait for 10 milliseconds
+}

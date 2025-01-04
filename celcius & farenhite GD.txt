@@ -1,0 +1,30 @@
+//C++ code
+int celsius = 0;
+int fahrenheit = 0;
+
+void setup(){
+  	pinMode(A2, INPUT);
+  	Serial.begin(9600);
+}
+
+void loop(){
+  	celsius = map(((analogRead(A2) - 20) * 3.04), 0, 1023, -40, 125);
+ 	fahrenheit = ((celsius * 9) / 5 + 32);
+  	Serial.print("Temperature in Cel : ");
+	Serial.print(celsius);
+	Serial.println(" C");
+	Serial.print("Temperature in Far : ");
+	Serial.print(fahrenheit);
+	Serial.println(" F");
+	
+  	if (celsius > 40){
+		Serial.println("High temperature");
+	}
+	else if (celsius<0){
+		Serial.println("Low temperature");
+	}
+	else{
+		Serial.println("Normal temperaure");
+	}
+	delay(10000);
+}

@@ -1,0 +1,38 @@
+int counter = 0;
+void setup()
+{
+Serial.begin(9600);
+pinMode(7,OUTPUT);
+pinMode(8,OUTPUT);
+pinMode(9,OUTPUT);
+}
+void loop() {
+if(counter == 31)
+{
+counter=0;
+}
+if(counter < 31)
+{
+Serial.println(counter);
+}
+counter = counter + 1;
+delay(100);
+if(counter > 0 && counter < 11 )
+{
+digitalWrite(7,HIGH);
+digitalWrite(8,LOW);
+digitalWrite(9,LOW);
+}
+if(counter > 10 && counter < 21 )
+{
+digitalWrite(7,LOW);
+digitalWrite(8,HIGH);
+digitalWrite(9,LOW);
+}
+if(counter > 20 && counter < 31 )
+{
+digitalWrite(7,LOW);
+digitalWrite(8,LOW);
+digitalWrite(9,HIGH);
+}
+}

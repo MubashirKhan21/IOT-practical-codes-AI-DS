@@ -1,0 +1,33 @@
+// C++ code
+
+int counter = 0;
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+    if(counter%2==0 && counter>0)
+    {
+      digitalWrite(12,LOW);
+      digitalWrite(13,HIGH);
+      Serial.print("\nExecution of AND");
+    }
+    else if(counter%2!=0||counter>0)
+    {
+      digitalWrite(13,LOW);
+      digitalWrite(12,HIGH);
+      Serial.print("\nExecution of OR");
+    }
+    else
+    {
+      digitalWrite(13,LOW);
+      digitalWrite(12,LOW);
+    }
+    counter++;
+    delay(1000); // Wait for 1000 millisecond(s)
+}

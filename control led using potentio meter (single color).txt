@@ -1,0 +1,35 @@
+int input;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode (2, OUTPUT);
+  pinMode (3, OUTPUT);
+  pinMode (4, OUTPUT);
+  digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(4, LOW);
+}
+
+void loop()
+{
+  input = map(analogRead(0), 0, 1023, 0, 300);
+  if(input > 199)
+  {
+    digitalWrite(2, HIGH);
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+  }
+  else if (input > 99)
+  {
+    digitalWrite(2, LOW);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, LOW);
+  }
+  else if (input > -1)
+  {
+    digitalWrite(2, LOW);
+    digitalWrite(3, LOW);
+    digitalWrite(4, HIGH);
+  }
+}

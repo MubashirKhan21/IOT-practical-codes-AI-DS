@@ -1,0 +1,15 @@
+// C++ code
+void setup(){
+  pinMode(13, OUTPUT);
+  pinMode(8, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+    digitalWrite(13, HIGH);
+    Serial.println("High LED 13");
+    delay(1000); // Wait for 1000 millisecond(s)
+    digitalWrite(13, LOW);
+    Serial.println("LOW LED 13");
+    delay(1000); // Wait for 1000 millisecond(s)
+}
